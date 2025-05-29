@@ -255,8 +255,26 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # https://github.com/pennersr/django-allauth
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_REQUIRED = True
+
+'''
+Email - azure communication services - begin
+'''
+DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+EMAIL_BACKEND = 'django_azure_communication_email.EmailBackend'
+AZURE_COMMUNICATION_CONNECTION_STRING = os.environ['AZURE_COMMUNICATION_CONNECTION_STRING']
+
+'''
+Email - azure communication services - end
+'''
+
+
+
+
 
 # set UI url to redirect after a successful e-mail confirmation
 # changed from '/auth/login' to '/auth/email-confirmation' for email confirmation message

@@ -97,6 +97,9 @@ services:
       CVAT_ANALYTICS: 1
       CVAT_BASE_URL:
       ONE_RUNNING_JOB_IN_QUEUE_PER_USER:
+      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-}
+      AZURE_COMMUNICATION_CONNECTION_STRING: ${AZURE_COMMUNICATION_CONNECTION_STRING:-}
+
     command: init run server
     labels:
       traefik.enable: "true"
