@@ -264,7 +264,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 '''
 Email - azure communication services - begin
 '''
-DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'DoNotReply@onefourseven.pl')
 EMAIL_BACKEND = 'django_azure_communication_email.EmailBackend'
 AZURE_COMMUNICATION_CONNECTION_STRING = os.environ['AZURE_COMMUNICATION_CONNECTION_STRING']
 
