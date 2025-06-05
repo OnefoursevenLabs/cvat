@@ -261,15 +261,37 @@ ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
 
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'DoNotReply@onefourseven.pl')
+
 '''
 Email - azure communication services - begin
 '''
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'DoNotReply@onefourseven.pl')
-EMAIL_BACKEND = 'django_azure_communication_email.EmailBackend'
-AZURE_COMMUNICATION_CONNECTION_STRING = os.environ['AZURE_COMMUNICATION_CONNECTION_STRING']
+#EMAIL_BACKEND = 'django_azure_communication_email.EmailBackend'
+#AZURE_COMMUNICATION_CONNECTION_STRING = os.environ['AZURE_COMMUNICATION_CONNECTION_STRING']
 
 '''
 Email - azure communication services - end
+'''
+
+'''
+Email - SMTP - begin
+'''
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.environ.get("CVAT_EMAIL_HOST", "smtp.azurecomm.net")
+EMAIL_PORT = int(os.environ.get("CVAT_EMAIL_PORT", 587))
+EMAIL_HOST_USER = os.environ.get("CVAT_EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("CVAT_EMAIL_HOST_PASSWORD", "")
+#EMAIL_USE_TLS = to_bool(os.environ.get("CVAT_EMAIL_USE_TLS", False))
+EMAIL_USE_SSL = to_bool(os.environ.get("CVAT_EMAIL_USE_SSL", True))
+'''
+if EMAIL_USE_TLS and EMAIL_USE_SSL:
+    raise ImproperlyConfigured(
+        "CVAT_EMAIL_USE_TLS and CVAT_EMAIL_USE_SSL cannot be set to True at the same time"
+    )
+'''
+
+'''
+Email - SMTP - end
 '''
 
 
