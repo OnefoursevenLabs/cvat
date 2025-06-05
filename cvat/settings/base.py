@@ -281,8 +281,8 @@ EMAIL_HOST = os.environ.get("CVAT_EMAIL_HOST", "smtp.azurecomm.net")
 EMAIL_PORT = int(os.environ.get("CVAT_EMAIL_PORT", 587))
 EMAIL_HOST_USER = os.environ.get("CVAT_EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("CVAT_EMAIL_HOST_PASSWORD", "")
-#EMAIL_USE_TLS = to_bool(os.environ.get("CVAT_EMAIL_USE_TLS", False))
-EMAIL_USE_SSL = to_bool(os.environ.get("CVAT_EMAIL_USE_SSL", True))
+EMAIL_USE_TLS = to_bool(os.environ.get("CVAT_EMAIL_USE_TLS", True))
+#EMAIL_USE_SSL = to_bool(os.environ.get("CVAT_EMAIL_USE_SSL", True))
 '''
 if EMAIL_USE_TLS and EMAIL_USE_SSL:
     raise ImproperlyConfigured(
